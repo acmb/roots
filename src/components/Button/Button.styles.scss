@@ -1,0 +1,100 @@
+.button-container {
+  font-family: "Caviar Dreams", sans-serif;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  appearance: none;
+  text-decoration: none;
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+
+  &.primary {
+    background-color: #088972;
+    color: #fff;
+    border: 1px solid transparent;
+    width: auto;
+
+    &:hover {
+      background-color: #fff;
+      color: #088972;
+      border: 1px solid #088972;
+    }
+  }
+
+  &.inline,
+  &.secondary {
+    background-color: #005547;
+    color: #fff;
+    border: 1px solid #005547;
+
+    &:hover {
+      background-color: #fff;
+      color: #005547;
+    }
+  }
+
+  &.inverted {
+    background-color: #fff;
+    color: #088972;
+    border: 1px solid #088972;
+
+    &:hover {
+      background-color: #088972;
+      color: #fff;
+    }
+  }
+
+  &.secondary,
+  &.inverted {
+    width: 100%;
+  }
+
+  &.inline {
+    @media screen and (min-width: 992px) {
+      padding: 0 12px;
+    }
+  }
+
+  &.google-sign-in {
+    border: 0;
+    background-color: #4285f4;
+    color: #fff;
+
+    &:hover {
+      background-color: #db4437;
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: #088972;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    padding: {
+      top: 0;
+      right: 12px;
+      bottom: 0;
+      left: 12px;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    padding: {
+      top: 0;
+      right: 35px;
+      bottom: 0;
+      left: 35px;
+    }
+  }
+}
