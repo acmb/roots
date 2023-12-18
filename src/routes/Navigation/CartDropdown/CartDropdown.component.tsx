@@ -9,7 +9,7 @@ import CartProducts from "../CartProducts/CartProducts.component"
 import "./CartDropdown.styles.scss"
 
 const CartDropdown: FC = () => {
-  const cartItems = useSelector(selectCartItems)
+  const cartItems = useSelector(selectCartItems) || []
 
   return (
     <div className="cart-dropdown-container">
