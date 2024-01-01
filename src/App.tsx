@@ -73,7 +73,6 @@ const App: FC = () => {
         <Route path="/" element={<Navigation />}>
           <Route path="about" element={<About />} />
           <Route path="auth" element={<Authentication />} />
-          <Route path="checkout" element={<Checkout />} />
           <Route element={<PrivateRoute/>}>
             <Route path="checkout" element={<Checkout/>}/>
           </Route>
