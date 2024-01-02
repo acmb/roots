@@ -31,12 +31,12 @@ const ifValidCardElement = (
 ): card is StripeCardElement => card !== null
 
 interface PaymentFormProps {
-  setShowCards?: (value: boolean) => void,
+  setShowConfirmation?: (value: boolean) => void,
   setUserLatestOrder?: (value: any) => void
 }
 
 const PaymentForm: FC<PaymentFormProps> = ({
-  setShowCards,
+  setShowConfirmation,
   setUserLatestOrder
 }) => {
   const dispatch = useDispatch<Dispatch>()
@@ -88,8 +88,8 @@ const PaymentForm: FC<PaymentFormProps> = ({
       alert(paymentResult.error.message)
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
-        if (setShowCards && setUserLatestOrder) {
-          setShowCards(true)
+        if (setShowConfirmation && setUserLatestOrder) {
+          setShowConfirmation(true)
           setUserLatestOrder(cartItems)
         }
 

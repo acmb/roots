@@ -135,10 +135,17 @@
   justify-content: center;
 }
 
+.cart-order-product,
 .cart-table-product {
   color: #005547;
   text-transform: capitalize;
+}
 
+.cart-order-product {
+  text-align: center;
+}
+
+.cart-table-product {
   @media screen and (max-width: 991px) {
     text-align: center;
   }
@@ -148,7 +155,8 @@
   }
 }
 
-.cart-table-price {
+.cart-table-price,
+.cart-table-order-qty {
   color: #088972;
   text-align: center;
   display: flex;
