@@ -21,11 +21,15 @@ interface CartItem {
 }
 
 type CheckoutProductPaymentProps = {
-  cartItems: CartItem[]
+  cartItems: CartItem[],
+  setShowCards?: (value: boolean) => void,
+  setUserLatestOrder?: (value: any) => void
 }
 
 const CheckoutProductPayment: FC<CheckoutProductPaymentProps> = ({
-  cartItems
+  cartItems,
+  setShowCards,
+  setUserLatestOrder
 }) => {
   const cartTotal = useSelector(selectCartTotal)
 
@@ -53,7 +57,10 @@ const CheckoutProductPayment: FC<CheckoutProductPaymentProps> = ({
         </div>
       </div>
       <div className="total">Total: {formattedPrice}</div>
-      <PaymentForm />
+      <PaymentForm
+        setShowCards={setShowCards}
+        setUserLatestOrder={setUserLatestOrder}
+      />
     </div>
   )
 }

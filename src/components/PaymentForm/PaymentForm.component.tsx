@@ -16,7 +16,10 @@ import {
 import { StripeCardElement } from "@stripe/stripe-js"
 
 import { clearCartItems } from "../../store/cart/cart.action"
-import { selectCartTotal } from "../../store/cart/cart.selector"
+import {
+  selectCartItems,
+  selectCartTotal
+} from "../../store/cart/cart.selector"
 import { selectCurrentUser } from "../../store/user/user.selector"
 
 import Button, { BUTTON_TYPE_CLASSES } from "../Button/Button.component"
@@ -27,12 +30,21 @@ const ifValidCardElement = (
   card: StripeCardElement | null
 ): card is StripeCardElement => card !== null
 
-const PaymentForm: FC = () => {
+interface PaymentFormProps {
+  setShowCards?: (value: boolean) => void,
+  setUserLatestOrder?: (value: any) => void
+}
+
+const PaymentForm: FC<PaymentFormProps> = ({
+  setShowCards,
+  setUserLatestOrder
+}) => {
   const dispatch = useDispatch<Dispatch>()
   const stripe = useStripe()
   const elements = useElements()
 
   const amount = useSelector(selectCartTotal)
+  const cartItems = useSelector(selectCartItems)
   const currentUser = useSelector(selectCurrentUser)
   const [isProcessingPayment, setIsProcessingPayment] = useState(false)
 
@@ -76,7 +88,10 @@ const PaymentForm: FC = () => {
       alert(paymentResult.error.message)
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
-        alert("Payment Successful!")
+        if (setShowCards && setUserLatestOrder) {
+          setShowCards(true)
+          setUserLatestOrder(cartItems)
+        }
 
         dispatch(clearCartItems())
       }
