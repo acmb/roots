@@ -31,6 +31,8 @@ const Checkout: FC = () => {
   const currentUser = useSelector(selectCurrentUser)
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [userLatestOrder, setUserLatestOrder] = useState<CartItem[]>([])
+  const [orderNumber, setOrderNumber] = useState("0")
+  const totalAmount = userLatestOrder.reduce((total, order) => total + order.price, 0)
 
   return (
     <>
@@ -38,8 +40,9 @@ const Checkout: FC = () => {
       <Breadcrumbs label="Checkout" />
       {cartItems.length > 0 ? (
         <CheckoutProductPayment
-          setShowConfirmation={setShowConfirmation}
           cartItems={cartItems}
+          setOrderNumber={setOrderNumber}
+          setShowConfirmation={setShowConfirmation}
           setUserLatestOrder={setUserLatestOrder}
         />
       ) : showConfirmation ? (
@@ -66,7 +69,7 @@ const Checkout: FC = () => {
             <span
               className="order-stamp-number"
             >
-              Order Number: 123456789
+              Order Number: {orderNumber}
             </span>
           </div>
           <div className="order-summary">
@@ -108,7 +111,7 @@ const Checkout: FC = () => {
                 ))}
               </div>
             </div>
-            <div className="total">Total: £7.70</div>
+            <div className="total">Total: {`£${totalAmount.toFixed(2)}`}</div>
           </div>
         </div>
       ) : (

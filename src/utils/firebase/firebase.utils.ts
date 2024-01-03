@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app"
 import {
   getAuth,
   signInWithRedirect,
-  signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -47,7 +46,7 @@ googleProvider.setCustomParameters({
 })
 
 export const auth = getAuth()
-export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
+export const signInWithGooglePopup = () => signInWithRedirect(auth, googleProvider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider)
 export const db = getFirestore()
 
@@ -92,21 +91,27 @@ export type UserData = {
 }
 
 export type OrderData = {
-  userId: string;
   cartItems: CartItem[]
-  orderDate: Date;
+  orderDate: Date
+  orderId: string
+  totalAmount: number
+  userId: string
 }
 
 export const createOrderDocument = async (
-  userId: string,
-  cartItems: CartItem[]
+  cartItems: CartItem[],
+  totalAmount: number,
+  orderId: string,
+  userId: string
 ): Promise<any> => {
   try {
     const orderCollectionRef = collection(db, "orders")
     const orderData: OrderData = {
-      userId,
       cartItems,
-      orderDate: new Date()
+      orderDate: new Date(),
+      orderId,
+      totalAmount,
+      userId,
     }
 
     await addDoc(orderCollectionRef, orderData)

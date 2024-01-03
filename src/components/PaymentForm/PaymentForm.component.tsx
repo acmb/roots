@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid"
 import {
   FC,
   FormEvent,
@@ -34,11 +35,13 @@ const ifValidCardElement = (
 ): card is StripeCardElement => card !== null
 
 interface PaymentFormProps {
+  setOrderNumber?: (value: string) => void
   setShowConfirmation?: (value: boolean) => void
   setUserLatestOrder?: (value: any) => void
 }
 
 const PaymentForm: FC<PaymentFormProps> = ({
+  setOrderNumber,
   setShowConfirmation,
   setUserLatestOrder
 }) => {
@@ -95,8 +98,20 @@ const PaymentForm: FC<PaymentFormProps> = ({
       alert(paymentResult.error.message)
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
-        if (setShowConfirmation && setUserLatestOrder) {
-          dispatch(addOrderStart(currentUser?.id ?? null, cartItems))
+        if (setOrderNumber && setShowConfirmation && setUserLatestOrder) {
+          const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
+          const uniqueId = uuidv4()
+
+          dispatch(
+            addOrderStart(
+              currentUser?.id ?? null,
+              cartItems,
+              totalAmount,
+              uniqueId
+            )
+          )
+
+          setOrderNumber(uniqueId ?? 0)
           setShowConfirmation(true)
           setUserLatestOrder(cartItems)
         }

@@ -13,9 +13,16 @@ import {
   addOrderSuccess
 } from "./cart.action"
 
-export function* addOrder({ payload: { userId, cartItems } }: any) {
+export function* addOrder({
+  payload: {
+    cartItems,
+    totalAmount,
+    uniqueId,
+    userId
+  }
+}: any) {
   try {
-    yield call(createOrderDocument, userId, cartItems)
+    yield call(createOrderDocument, cartItems, totalAmount, uniqueId, userId)
     yield put(addOrderSuccess())
   } catch (error) {
     yield put(addOrderFailure(error))
