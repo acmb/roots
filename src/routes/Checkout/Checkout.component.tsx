@@ -5,6 +5,7 @@ import {
 import { useSelector } from "react-redux"
 
 import { selectCartItems } from "../../store/cart/cart.selector"
+import { selectCurrentUser } from "../../store/user/user.selector"
 
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.component"
 import CheckoutProductPayment from "./CheckoutProductPayment/CheckoutProductPayment.component"
@@ -27,6 +28,7 @@ interface CartItem {
 
 const Checkout: FC = () => {
   const cartItems = useSelector(selectCartItems) as CartItem[]
+  const currentUser = useSelector(selectCurrentUser)
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [userLatestOrder, setUserLatestOrder] = useState<CartItem[]>([])
 
@@ -46,7 +48,12 @@ const Checkout: FC = () => {
             <h2
               className="order-stamp-heading"
             >
-              Congrats, User
+              Congrats,{" "}
+              {
+                currentUser && (
+                  currentUser.displayName.split(" ")[0]
+                )
+              }
             </h2>
             <img
               alt="Basket Icon"
