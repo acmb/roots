@@ -15,7 +15,13 @@ import {
 } from "@stripe/react-stripe-js"
 import { StripeCardElement } from "@stripe/stripe-js"
 
-import { clearCartItems } from "../../store/cart/cart.action"
+import { createOrderDocument } from "../../utils/firebase/firebase.utils"
+
+import { addOrder } from "../../store/cart/cart.saga"
+import {
+  addOrderStart,
+  clearCartItems
+} from "../../store/cart/cart.action"
 import {
   selectCartItems,
   selectCartTotal
@@ -31,7 +37,7 @@ const ifValidCardElement = (
 ): card is StripeCardElement => card !== null
 
 interface PaymentFormProps {
-  setShowConfirmation?: (value: boolean) => void,
+  setShowConfirmation?: (value: boolean) => void
   setUserLatestOrder?: (value: any) => void
 }
 
@@ -57,12 +63,16 @@ const PaymentForm: FC<PaymentFormProps> = ({
 
     setIsProcessingPayment(true)
 
-    const response = await fetch("/.netlify/functions/create-payment-intent", {
+    const response = await fetch(
+      "/.netlify/functions/create-payment-intent",
+    {
       method: "post",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ amount: amount * 100 })
+      body: JSON.stringify({
+        amount: amount * 100
+      })
     }).then((res) => res.json())
 
     const {
@@ -89,6 +99,7 @@ const PaymentForm: FC<PaymentFormProps> = ({
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
         if (setShowConfirmation && setUserLatestOrder) {
+          dispatch(addOrderStart(currentUser?.id ?? null, cartItems))
           setShowConfirmation(true)
           setUserLatestOrder(cartItems)
         }

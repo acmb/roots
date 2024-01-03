@@ -23,6 +23,7 @@ import {
   QueryDocumentSnapshot
 } from "firebase/firestore"
 
+import { CartItem } from "../../store/cart/cart.types"
 import { Category } from "../../store/categories/category.types"
 
 const firebaseConfig = {
@@ -86,6 +87,30 @@ export type UserData = {
   createdAt: Date
   displayName: string
   email: string
+  id?: string
+}
+
+export type OrderData = {
+  userId: string;
+  cartItems: CartItem[]
+  orderDate: Date;
+}
+
+export const createOrderDocument = async (
+  userId: string,
+  cartItems: CartItem[]
+): Promise<any> => {
+  try {
+    const orderCollectionRef = collection(db, "orders")
+    const orderData: OrderData = {
+      userId,
+      cartItems,
+      orderDate: new Date()
+    }
+    const docRef = await addDoc(orderCollectionRef, orderData)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const createUserDocumentFromAuth = async (
