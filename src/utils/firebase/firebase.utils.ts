@@ -12,15 +12,16 @@ import {
   User
 } from "firebase/auth"
 import {
-  getFirestore,
+  addDoc,
+  collection,
   doc,
   getDoc,
-  setDoc,
-  collection,
-  writeBatch,
-  query,
   getDocs,
-  QueryDocumentSnapshot
+  getFirestore,
+  query,
+  QueryDocumentSnapshot,
+  setDoc,
+  writeBatch
 } from "firebase/firestore"
 
 import { CartItem } from "../../store/cart/cart.types"
