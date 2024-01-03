@@ -108,7 +108,8 @@ export const createOrderDocument = async (
       cartItems,
       orderDate: new Date()
     }
-    const docRef = await addDoc(orderCollectionRef, orderData)
+
+    await addDoc(orderCollectionRef, orderData)
   } catch (error) {
     console.log(error)
   }

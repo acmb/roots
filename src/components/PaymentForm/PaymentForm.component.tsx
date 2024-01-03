@@ -15,9 +15,6 @@ import {
 } from "@stripe/react-stripe-js"
 import { StripeCardElement } from "@stripe/stripe-js"
 
-import { createOrderDocument } from "../../utils/firebase/firebase.utils"
-
-import { addOrder } from "../../store/cart/cart.saga"
 import {
   addOrderStart,
   clearCartItems
