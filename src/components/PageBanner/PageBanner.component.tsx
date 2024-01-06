@@ -17,6 +17,7 @@ const PageBanner: FC<PageBannerProps> = ({
         alt="Vegetable Banner"
         className="banner-image"
         height={148}
+        loading="eager"
         src={BannerBg}
         width={320}
       />

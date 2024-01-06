@@ -50,6 +50,7 @@ const MainBanner: FC = () => {
                 className="bannerImage"
                 height={363}
                 src={ImageBanner1}
+                loading="eager"
                 width={320}
               />
             ) : (
