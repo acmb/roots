@@ -69,6 +69,10 @@ const MainBanner: FC = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <span
+        className="swiper-pagination-bullet swiper-pagination-bullet-active"
+        style={{ display: "hidden" }}
+      />
     </>
   )
 }

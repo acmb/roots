@@ -48,7 +48,7 @@
   transform: translateX(-50%);
   z-index: 5;
   display: flex;
-  width: auto;
+  width: auto!important;
 }
 
 .swiper-pagination-bullet {
