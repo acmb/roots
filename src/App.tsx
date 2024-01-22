@@ -2,8 +2,7 @@ import {
   FC,
   lazy,
   Suspense,
-  useEffect,
-  useState
+  useEffect
 } from "react"
 import { useDispatch } from "react-redux"
 import {
@@ -58,47 +57,34 @@ const TermsConditions = lazy(() =>
 )
 
 const App: FC = () => {
-  const [pageLoading, setPageLoading] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(checkUserSession())
   })
 
-  useEffect(() => {
-    dispatch(checkUserSession())
-
-    setTimeout(() => {
-      setPageLoading(true)
-    }, 2000)
-  })
-
   return (
     <Suspense>
-      {
-        pageLoading && (
-          <>
-            <Routes>
-              <Route path="/" element={<Navigation />}>
-                <Route path="about" element={<About />} />
-                <Route path="auth" element={<Authentication />} />
-                <Route element={<PrivateRoute/>}>
-                  <Route path="checkout" element={<Checkout/>}/>
-                </Route>
-                <Route path="contact" element={<Contact />} />
-                <Route path="faq" element={<FAQ />} />
-                <Route index element={<Home />}  />
-                <Route path="privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="shop/*" element={<Shop />} />
-                <Route path="sitemap" element={<Sitemap />} />
-                <Route path="sustainability" element={<Sustainability />} />
-                <Route path="terms-and-conditions" element={<TermsConditions />} />
-              </Route>
-            </Routes>
-            <Footer />
-          </>
-        )
-      }
+      <>
+        <Routes>
+          <Route path="/" element={<Navigation />}>
+            <Route path="about" element={<About />} />
+            <Route path="auth" element={<Authentication />} />
+            <Route element={<PrivateRoute/>}>
+              <Route path="checkout" element={<Checkout/>}/>
+            </Route>
+            <Route path="contact" element={<Contact />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route index element={<Home />}  />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="shop/*" element={<Shop />} />
+            <Route path="sitemap" element={<Sitemap />} />
+            <Route path="sustainability" element={<Sustainability />} />
+            <Route path="terms-and-conditions" element={<TermsConditions />} />
+          </Route>
+        </Routes>
+        <Footer />
+      </>
     </Suspense>
   )
 }
