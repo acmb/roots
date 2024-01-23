@@ -15,7 +15,7 @@ import PageBanner from "../../components/PageBanner/PageBanner.component"
 import { Elements } from "@stripe/react-stripe-js"
 import { stripePromise } from "../../utils/stripe/stripe.utils"
 
-import emptyBasket from "../../assets/images/basket-icon.png"
+import emptyBasket from "../../assets/images/basket-icon.webp"
 
 interface CartItem {
   calories: number
