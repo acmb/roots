@@ -11,10 +11,12 @@ import {
 import { Dispatch } from "@reduxjs/toolkit"
 import {
   CardElement,
+  Elements,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js"
 import { StripeCardElement } from "@stripe/stripe-js"
+import { stripePromise } from "../../utils/stripe/stripe.utils"
 
 import {
   addOrderStart,
@@ -122,21 +124,23 @@ const PaymentForm: FC<PaymentFormProps> = ({
   }
 
   return (
-    <div className="payment-form-container">
-      <form
-        className="payment-form"
-        onSubmit={paymentHandler}
-      >
-        <h2 className="payment-form-heading">Payment Details</h2>
-        <CardElement className="payment-form-card" />
-        <Button
-          buttonClassType={BUTTON_TYPE_CLASSES.inverted}
-          isLoading={isProcessingPayment}
+    <Elements stripe={stripePromise}>
+      <div className="payment-form-container">
+        <form
+          className="payment-form"
+          onSubmit={paymentHandler}
         >
-          Pay Now
-        </Button>
-      </form>
-    </div>
+          <h2 className="payment-form-heading">Payment Details</h2>
+          <CardElement className="payment-form-card" />
+          <Button
+            buttonClassType={BUTTON_TYPE_CLASSES.inverted}
+            isLoading={isProcessingPayment}
+          >
+            Pay Now
+          </Button>
+        </form>
+      </div>
+    </Elements>
   )
 }
 

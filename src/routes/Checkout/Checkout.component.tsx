@@ -12,9 +12,6 @@ import CheckoutProductPayment from "./CheckoutProductPayment/CheckoutProductPaym
 import EmptyCheckout from "./EmptyCheckout/EmptyCheckout.component"
 import PageBanner from "../../components/PageBanner/PageBanner.component"
 
-import { Elements } from "@stripe/react-stripe-js"
-import { stripePromise } from "../../utils/stripe/stripe.utils"
-
 import emptyBasket from "../../assets/images/basket-icon.webp"
 
 interface CartItem {
@@ -38,7 +35,7 @@ const Checkout: FC = () => {
   const totalAmount = userLatestOrder.reduce((total, order) => total + order.price, 0)
 
   return (
-    <Elements stripe={stripePromise}>
+    <>
       <PageBanner label="Checkout" />
       <Breadcrumbs label="Checkout" />
       {cartItems.length > 0 ? (
@@ -122,7 +119,7 @@ const Checkout: FC = () => {
       ) : (
         <EmptyCheckout />
       )}
-    </Elements>
+    </>
   )
 }
 
