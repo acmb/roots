@@ -1,7 +1,5 @@
 import { FC, useRef } from "react"
 
-import { LazyLoadImage } from "react-lazy-load-image-component"
-
 import { Autoplay, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import type SwiperCore from "swiper"
@@ -33,56 +31,56 @@ const MainBanner: FC = () => {
   ]
 
   return (
-    <>
-      <Swiper
-        autoplay={{
-          delay: 4500,
-          disableOnInteraction: false,
-        }}
-        className="banner"
-        modules={[Autoplay, Pagination]}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper
-        }}
-        pagination={{
-          el: ".swiper-pagination-custom",
-          clickable: true
-        }}
-        slidesPerView="auto"
-      >
-        <div className="container swiper-pagination-custom" />
-        {data.main_banner.map((banner, index) => (
-          <SwiperSlide className="bannerSlide" key={`image-${index + 1}`}>
-            {index === 0 ? (
-              <img
-                alt="Banner 1"
-                className="bannerImage"
-                height={363}
-                src={isMobile ? ImageBanner1_50 : ImageBanner1}
-                width={320}
-              />
-            ) : (
-              <LazyLoadImage
-                alt={`Banner ${index + 1}`}
-                className="bannerImage"
-                height={363}
-                src={imageBanners[index % imageBanners.length]}
-                width={320}
-              />
-            )}
-            <div className="container">
-              <div className="bannerText">
-                <p>{banner.bannerText}</p>
-              </div>
+    <Swiper
+      autoplay={{
+        delay: 4500,
+        disableOnInteraction: false,
+      }}
+      className="banner"
+      modules={[Autoplay, Pagination]}
+      onBeforeInit={(swiper) => {
+        swiperRef.current = swiper
+      }}
+      pagination={{
+        el: ".swiper-pagination-custom",
+        clickable: true
+      }}
+      slidesPerView="auto"
+    >
+      <div className="container swiper-pagination-custom" />
+      {data.main_banner.map((banner, index) => (
+        <SwiperSlide className="bannerSlide" key={`image-${index + 1}`}>
+          {index === 0 ? (
+            <img
+              alt="Banner 1"
+              className="bannerImage"
+              height={363}
+              src={isMobile ? ImageBanner1_50 : ImageBanner1}
+              width={320}
+              loading="eager"
+            />
+          ) : (
+            <img
+              alt={`Banner ${index + 1}`}
+              className="bannerImage"
+              height={363}
+              src={imageBanners[index % imageBanners.length]}
+              width={320}
+              loading="lazy"
+            />
+          )}
+          <div className="container">
+            <div className="bannerText">
+              <p>{banner.bannerText}</p>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          </div>
+        </SwiperSlide>
+      ))}
       <span
         className="swiper-pagination-bullet swiper-pagination-bullet-active"
         style={{ display: "hidden" }}
       />
-    </>
+    </Swiper>
   )
 }
 

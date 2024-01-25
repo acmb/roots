@@ -1,5 +1,7 @@
 import { FC } from "react"
 
+import useScreenWidth from "../../hook/useScreenWidth"
+
 import Directory from "../../components/Directory/Directory.component"
 import MainBanner from "../../components/MainBanner/MainBanner.component"
 import ServicesList from "../../components/ServicesList/ServicesList.component"
@@ -12,7 +14,16 @@ import Pizza from "../../assets/images/cover/pizza.webp"
 import Salad from "../../assets/images/cover/salad.webp"
 import Soup from "../../assets/images/cover/soup.webp"
 
+import ImageBanner1 from "../../assets/images/home/home-slide-1.webp"
+import ImageBanner1_50 from "../../assets/images/home/home-slide-1_50.webp"
+
 const Home: FC = () => {
+  const isMobile = !useScreenWidth(961)
+  const preload = isMobile ? ImageBanner1_50 : ImageBanner1
+
+  const img = new Image()
+  img.src = preload
+
   const categories = [
     {
       id: 1,
