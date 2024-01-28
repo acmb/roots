@@ -36,6 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "cwebp": "node scripts/generateWebp.js",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "postbuild": "purgecss --css build/static/css/*.css --content build/index.html build/static/js/*.js --output build/static/css",
     "test": "react-scripts test",
