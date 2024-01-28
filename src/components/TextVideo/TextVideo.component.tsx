@@ -12,10 +12,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { LazyLoadImage } from "react-lazy-load-image-component"
 
-import aboutDesktop from "../../assets/images/about/about-desktop.webp"
-import aboutMobile from "../../assets/images/about/about-mobile.webp"
+import aboutDesktop from "../../assets/images/about/about-desktop.jpg"
+import aboutMobile from "../../assets/images/about/about-mobile.jpg"
 import aboutVideo from "../../assets/images/about/video.mp4"
-import aboutVideoImg from "../../assets/images/about/video.webp"
+import aboutVideoImg from "../../assets/images/about/video.jpg"
 
 import "./TextVideo.styles.scss"
 

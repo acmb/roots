@@ -1,25 +1,20 @@
 import { FC } from "react"
 
-import useScreenWidth from "../../hook/useScreenWidth"
-
 import Directory from "../../components/Directory/Directory.component"
 import MainBanner from "../../components/MainBanner/MainBanner.component"
 import ServicesList from "../../components/ServicesList/ServicesList.component"
 
-import Curry from "../../assets/images/cover/curry.webp"
-import Deserts from "../../assets/images/cover/deserts.webp"
-import Drinks from "../../assets/images/cover/drinks.webp"
-import Pasta from "../../assets/images/cover/pasta.webp"
-import Pizza from "../../assets/images/cover/pizza.webp"
-import Salad from "../../assets/images/cover/salad.webp"
-import Soup from "../../assets/images/cover/soup.webp"
-
-import ImageBanner1 from "../../assets/images/home/home-slide-1.webp"
-import ImageBanner1_50 from "../../assets/images/home/home-slide-1_50.webp"
+import Curry from "../../assets/images/cover/curry.jpg"
+import Deserts from "../../assets/images/cover/deserts.jpg"
+import Drinks from "../../assets/images/cover/drinks.jpg"
+import Pasta from "../../assets/images/cover/pasta.jpg"
+import Pizza from "../../assets/images/cover/pizza.jpg"
+import Salad from "../../assets/images/cover/salad.jpg"
+import Soup from "../../assets/images/cover/soup.jpg"
+import ImageBanner1 from "../../assets/images/home/home-slide-1.jpg"
 
 const Home: FC = () => {
-  const isMobile = !useScreenWidth(961)
-  const preload = isMobile ? ImageBanner1_50 : ImageBanner1
+  const preload = ImageBanner1
 
   const img = new Image()
   img.src = preload

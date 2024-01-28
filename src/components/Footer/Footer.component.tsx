@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import FooterForm from "./FooterForm/FooterForm.component"
 
-import Logo from "../../assets/images/logo.webp"
+import Logo from "../../assets/images/logo.png"
 
 import data from "../../data/page-content.json"
 

@@ -4,15 +4,10 @@ import { Autoplay, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import type SwiperCore from "swiper"
 
-import useScreenWidth from "../../hook/useScreenWidth"
-
 import data from "../../data/page-content.json"
-import ImageBanner1 from "../../assets/images/home/home-slide-1.webp"
-import ImageBanner1_50 from "../../assets/images/home/home-slide-1_50.webp"
-import ImageBanner2 from "../../assets/images/home/home-slide-2.webp"
-import ImageBanner2_50 from "../../assets/images/home/home-slide-2_50.webp"
-import ImageBanner3 from "../../assets/images/home/home-slide-3.webp"
-import ImageBanner3_50 from "../../assets/images/home/home-slide-3_50.webp"
+import ImageBanner1 from "../../assets/images/home/home-slide-1.jpg"
+import ImageBanner2 from "../../assets/images/home/home-slide-2.jpg"
+import ImageBanner3 from "../../assets/images/home/home-slide-3.jpg"
 
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import "swiper/css"
@@ -21,11 +16,7 @@ import "./MainBanner.styles.scss"
 
 const MainBanner: FC = () => {
   const swiperRef = useRef<SwiperCore>()
-  const isMobile = !useScreenWidth(961)
-  const imageBanners = isMobile ? [
-    ImageBanner2_50,
-    ImageBanner3_50
-  ] : [
+  const imageBanners = [
     ImageBanner2,
     ImageBanner3
   ]
@@ -55,7 +46,7 @@ const MainBanner: FC = () => {
               alt="Banner 1"
               className="bannerImage"
               height={363}
-              src={isMobile ? ImageBanner1_50 : ImageBanner1}
+              src={ImageBanner1}
               width={320}
               loading="eager"
             />
