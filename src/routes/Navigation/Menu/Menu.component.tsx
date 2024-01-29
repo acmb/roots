@@ -16,7 +16,7 @@ import CartIcon from "../CartIcon/CartIcon.component"
 import MenuList from "../MenuList/MenuList.component"
 import MenuModal from "../MenuModal/MenuModal.component"
 
-import Logo from "../../../assets/images/logo.png"
+import Logo from "../../../assets/images/logo_25.png"
 
 import "./Menu.styles.scss"
 
