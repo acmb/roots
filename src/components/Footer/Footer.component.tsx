@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import FooterForm from "./FooterForm/FooterForm.component"
 
-import Logo from "../../assets/images/logo_25.png"
+import Logo from "../../assets/images/logo_25_lossless.webp"
 
 import data from "../../data/page-content.json"
 

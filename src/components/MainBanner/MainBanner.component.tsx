@@ -7,12 +7,12 @@ import type SwiperCore from "swiper"
 import useScreenWidth from "../../hook/useScreenWidth"
 
 import data from "../../data/page-content.json"
-import ImageBanner1 from "../../assets/images/home/home-slide-1.jpg"
-import ImageBanner1_50 from "../../assets/images/home/home-slide-1_50.jpg"
-import ImageBanner2 from "../../assets/images/home/home-slide-2.jpg"
-import ImageBanner2_50 from "../../assets/images/home/home-slide-2_50.jpg"
-import ImageBanner3 from "../../assets/images/home/home-slide-3.jpg"
-import ImageBanner3_50 from "../../assets/images/home/home-slide-3_50.jpg"
+import ImageBanner1 from "../../assets/images/home/home-slide-1.webp"
+import ImageBanner1_50 from "../../assets/images/home/home-slide-1_50.webp"
+import ImageBanner2 from "../../assets/images/home/home-slide-2.webp"
+import ImageBanner2_50 from "../../assets/images/home/home-slide-2_50.webp"
+import ImageBanner3 from "../../assets/images/home/home-slide-3.webp"
+import ImageBanner3_50 from "../../assets/images/home/home-slide-3_50.webp"
 
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import "swiper/css"

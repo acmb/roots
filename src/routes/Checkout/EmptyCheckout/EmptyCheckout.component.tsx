@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Link } from "react-router-dom"
 
-import emptyBasket from "../../../assets/images/basket-icon.png"
+import emptyBasket from "../../../assets/images/basket-icon_lossless.webp"
 
 import "../Checkout.styles.scss"
 

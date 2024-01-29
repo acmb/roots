@@ -7,9 +7,9 @@ import data from "../../data/page-content.json"
 import "./TextMedia.styles.scss"
 
 const imagePaths: string[] = [
-  require("../../assets/images/about/bottles.png"),
-  require("../../assets/images/about/flavours.png"),
-  require("../../assets/images/about/egg.png")
+  require("../../assets/images/about/bottles_lossless.webp"),
+  require("../../assets/images/about/flavours_lossless.webp"),
+  require("../../assets/images/about/egg_lossless.webp")
 ]
 
 interface TextMediaItem {

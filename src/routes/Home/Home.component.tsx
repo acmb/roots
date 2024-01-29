@@ -6,15 +6,15 @@ import ServicesList from "../../components/ServicesList/ServicesList.component"
 
 import useScreenWidth from "../../hook/useScreenWidth"
 
-import Curry from "../../assets/images/cover/curry.jpg"
-import Deserts from "../../assets/images/cover/deserts.jpg"
-import Drinks from "../../assets/images/cover/drinks.jpg"
-import Pasta from "../../assets/images/cover/pasta.jpg"
-import Pizza from "../../assets/images/cover/pizza.jpg"
-import Salad from "../../assets/images/cover/salad.jpg"
-import Soup from "../../assets/images/cover/soup.jpg"
-import ImageBanner1 from "../../assets/images/home/home-slide-1.jpg"
-import ImageBanner1_50 from "../../assets/images/home/home-slide-1_50.jpg"
+import Curry from "../../assets/images/cover/curry.webp"
+import Deserts from "../../assets/images/cover/deserts.webp"
+import Drinks from "../../assets/images/cover/drinks.webp"
+import Pasta from "../../assets/images/cover/pasta.webp"
+import Pizza from "../../assets/images/cover/pizza.webp"
+import Salad from "../../assets/images/cover/salad.webp"
+import Soup from "../../assets/images/cover/soup.webp"
+import ImageBanner1 from "../../assets/images/home/home-slide-1.webp"
+import ImageBanner1_50 from "../../assets/images/home/home-slide-1_50.webp"
 
 const Home: FC = () => {
   const isMobile = !useScreenWidth(961)

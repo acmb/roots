@@ -7,8 +7,8 @@ import data from "../../data/page-content.json"
 import "./FoundersList.styles.scss"
 
 const imagePaths: string[] = [
-  require("../../assets/images/about/danielle-sanchez.png"),
-  require("../../assets/images/about/nicole-gabbiadini.png")
+  require("../../assets/images/about/danielle-sanchez_lossless.webp"),
+  require("../../assets/images/about/nicole-gabbiadini_lossless.webp")
 ]
 
 const FoundersList: FC = () => {
